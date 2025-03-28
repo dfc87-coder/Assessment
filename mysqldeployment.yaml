@@ -15,6 +15,9 @@ spec:
       containers:
         - name: mysql
           image: williambanks/william:v1.1
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "123"
       volumes:
         - name: mysql-storage
           persistentVolumeClaim:
