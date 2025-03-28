@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: web-basic
+  namespace: william
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/dfc87-coder/Assessment
+    targetRevision: HEAD
+    path: myapp
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: william
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
